@@ -59,7 +59,7 @@ This script will ask you some informations to configure `.env` of the applicatio
 
 \* *Care, if you are working with Docker, you will need to configure `APP_HOST` to `mysql`.*
 
-\* *The token isn't available on github, if necessary you have to ask [@AlxisHenry](https://github.com/AlxisHenry).* 
+\* *The API token isn't available on github.* 
 
 ```bash
 bash setup.sh
