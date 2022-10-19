@@ -14,9 +14,19 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         /** 
-         * Roles
+         * Create roles
          */
-        \App\Models\Role::factory(4)->create();
+        \App\Models\Role::factory()->create([
+            'label' => 'user',
+        ]);
+
+        \App\Models\Role::factory()->create([
+            'label' => 'vip',
+        ]);
+
+        \App\Models\Role::factory()->create([
+            'label' => 'admin',
+        ]);
 
         /**
          * Generate random users accounts

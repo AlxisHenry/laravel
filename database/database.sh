@@ -5,7 +5,7 @@
 # - Please make sure your database already exist
 # - Run this script with the following command : bash /database/migrate.sh
 
-migrate () {
+database_setup () {
 
 	# Check that you are running the script in the right folder
 	if [ ! -d "database" ]; then
@@ -17,16 +17,12 @@ migrate () {
 		exit;
 	fi;
 
-	# Import environment variables from the .env of the application
-	sed -i 's/\r$//' $(dirname "$0")/../.env;
-	source $(dirname "$0")/../.env;
-
 	# Drop all tables and re-run all migrations
-	php artisan migrate:fresh
+	php artisan migrate:fresh;
 
 	# Seed the database with records
-	php artisan db:seed
+	php artisan db:seed;
 	
 }
 
-time migrate
+database_setup;

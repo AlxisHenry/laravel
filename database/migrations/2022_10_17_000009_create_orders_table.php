@@ -21,6 +21,9 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->onDelete('set null');
+            $table->foreignId('address_id')
+                ->constrained()
+                ->onDelete('set null');
             $table->timestamps();
         });
     }

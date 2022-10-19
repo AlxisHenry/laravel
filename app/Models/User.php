@@ -18,9 +18,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
+        'username',
+        'birthday',
+        'phone',
         'email',
         'password',
+        'is_active'
     ];
 
     /**
@@ -41,4 +46,40 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+	 * Get all addresses owned by the user
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+    public function user() {
+		return $this->hasMany(UserAddress::class);
+	}
+
+    /**
+	 * Get the role of the current user
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */ 
+    public function role() {
+        return $this->belongsTo(UserRole::class);
+    }
+
+    /**
+	 * Get all product in the user cart
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */ 
+    public function cart() {
+        return $this->hasMany(Cart::class);
+    }
+
+    /**
+	 * Get all favorites of the user
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */ 
+    public function favorites() {
+        return $this->hasMany(UserFavorite::class);
+    }
 }
