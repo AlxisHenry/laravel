@@ -57,11 +57,11 @@ env_emails() {
 	then 
 		MAIL_USERNAME=$(echo $RESPONSE | awk -F 'smtp'  '{print $2}' | awk -F 'email' '{print $2}' | cut -d ',' -f 1| sed 's/":"//' | sed 's/"//')
 		MAIL_PASSWORD=$(echo $RESPONSE | awk -F 'smtp'  '{print $2}' | awk -F 'password' '{print $2}' | cut -d ',' -f 1| sed 's/":"//' | sed 's/"//' | sed 's/}}}//')
-		echo -e "\n  The email server has been correctly configured. Response code : [\e[0;33m$RESPONSE_CODE\e[0m]"
+		echo -e "\nThe email server has been correctly configured. Response code : [\e[0;33m$RESPONSE_CODE\e[0m]\n"
 	else
 		MAIL_USERNAME="";
 		MAIL_PASSWORD="";	
-		echo -e "\n  The provided token isn't correct. Response code : [\e[0;33m$RESPONSE_CODE\e[0m]"
+		echo -e "\nThe provided token isn't correct. Response code : [\e[0;33m$RESPONSE_CODE\e[0m]\n"
 	fi	
 }
 
@@ -76,9 +76,11 @@ env() {
 }
 
 start() {
-	dependencies --development;
-	build;
-	configuration;
+	clear;
+	echo -e "\nPlease wait, we are setting up the application...\n";	
+	dependencies --development > /dev/null 2>&1;
+	build > /dev/null 2>&1;
+	configuration > /dev/null 2>&1;
 	env;
 }
 
