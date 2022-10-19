@@ -17,8 +17,7 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-            'label' => str_replace('.', '', $this->faker->sentence(1, true)),
-            'color' => $this->faker->hexColor(),
+            'label' => str_replace('.', '', $this->faker->sentence(1, true))
         ];
     }
 }

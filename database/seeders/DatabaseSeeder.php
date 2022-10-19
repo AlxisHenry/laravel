@@ -31,16 +31,21 @@ class DatabaseSeeder extends Seeder
         /**
          * Generate random users accounts
          */
-        \App\Models\User::factory(25)->create();
+        \App\Models\User::factory(50)->create();
 
         /**
          * Create admin account
          */
         \App\Models\User::factory()->create([
             'username' => 'admin',
-            'email' => 'test@example.com',
+            'email' => '    ',
             // Default password is 'password'
         ]);
+
+        /**
+         * Generate random categories
+         */
+        \App\Models\Category::factory(10)->create();
 
     }
 }
