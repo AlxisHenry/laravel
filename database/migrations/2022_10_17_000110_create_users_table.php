@@ -27,9 +27,12 @@ return new class extends Migration
             $table->string('password');
             $table->string('profile_photo_path', 2048)->nullable();
             $table->boolean('is_active')->default(true);
+            $table->foreignId('role_id')
+                ->nullable()
+                ->constrained('roles')
+                ->onDelete('set null');
             $table->rememberToken();
             $table->timestamps();
-            // role_id
         });
     }
 

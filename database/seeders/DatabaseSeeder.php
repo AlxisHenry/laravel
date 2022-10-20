@@ -14,38 +14,54 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         /** 
-         * Create roles
+         * Generate roles
          */
-        \App\Models\Role::factory()->create([
-            'label' => 'user',
-        ]);
+        $roles = ['admin', 'user', 'view', 'vip'];
 
-        \App\Models\Role::factory()->create([
-            'label' => 'vip',
-        ]);
-
-        \App\Models\Role::factory()->create([
-            'label' => 'admin',
-        ]);
+        foreach ($roles as $role) {
+            \App\Models\Role::factory()->create([
+                'label' => $role,
+            ]);
+        }
 
         /**
          * Generate random users accounts
          */
-        \App\Models\User::factory(50)->create();
+        \App\Models\User::factory(250)->create();
 
         /**
-         * Create admin account
+         * Generate accounts
          */
-        \App\Models\User::factory()->create([
-            'username' => 'admin',
-            'email' => '    ',
-            // Default password is 'password'
+        $accounts = json_encode([
+            [ 'username' => 'admin', 'email' => 'test1@example.com' ],
+            [ 'username' => 'user', 'email' => 'test2@example.com' ],
+            [ 'username' => 'Joe', 'email' => 'test3@example.com']
         ]);
+
+        foreach (json_decode($accounts) as $account) {
+            \App\Models\User::factory()->create([
+                'username' => $account->username,
+                'email' => $account->email,
+                'role_id' => random_int(1, count($roles) - 1),
+                // Default password is 'password'
+            ]);
+        }
 
         /**
          * Generate random categories
          */
-        \App\Models\Category::factory(10)->create();
+        \App\Models\Category::factory(24)->create();
+
+        /**
+         * Generate differents statuses
+         */
+        \App\Models\OrderProductStatus::factory(7)->create();
+        \App\Models\OrderStatus::factory(7)->create();
+
+        /**
+         * Generate random products
+         */
+        \App\Models\Product::factory(350)->create();
 
     }
 }

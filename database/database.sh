@@ -23,9 +23,6 @@ database_setup () {
 	# Seed the database with records
 	php artisan db:seed;
 
-	# Foreign key constraints
-	php artisan migrate --path=/database/migrations/secure/2022_10_17_099999_add_foreign_keys_constraints_to_tables.php;
-	
 }
 
 database_setup;

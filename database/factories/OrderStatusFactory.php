@@ -17,9 +17,8 @@ class OrderStatusFactory extends Factory
     public function definition()
     {
         return [
-            'name' => str_replace('.', '', $this->faker->sentence(1, true)),
-            'slug' => $this->faker->slug(),
-            'description' => $this->faker->sentence(3, true),
+            'label' => str_replace('.', '', $this->faker->sentence(1, true)),
+            'color' => $this->faker->hexColor(),
         ];
     }
 }
