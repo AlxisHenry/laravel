@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
          * Generate accounts
          */
         $accounts = json_encode([
-            [ 'username' => 'admin', 'email' => 'test1@example.com' ],
+            [ 'username' => 'admin', 'email' => 'admin@example.com' ],
             [ 'username' => 'user', 'email' => 'test2@example.com' ],
             [ 'username' => 'Joe', 'email' => 'test3@example.com']
         ]);
