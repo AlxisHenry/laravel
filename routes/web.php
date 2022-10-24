@@ -30,6 +30,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
+        // dd(App\Models\User::where('email', 'like', '%alexis57@%')->get());
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });

@@ -16,7 +16,9 @@ const props = defineProps({
 
 const form = useForm({
     _method: 'PUT',
-    name: props.user.name,
+    firstname: props.user.firstname,
+    lastname: props.user.lastname,
+    username: props.user.username,
     email: props.user.email,
     photo: null,
 });
@@ -128,19 +130,6 @@ const clearPhotoFileInput = () => {
                 <InputError :message="form.errors.photo" class="mt-2" />
             </div>
 
-            <!-- Name -->
-            <div class="col-span-6 sm:col-span-4">
-                <InputLabel for="name" value="Name" />
-                <TextInput
-                    id="name"
-                    v-model="form.name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    autocomplete="name"
-                />
-                <InputError :message="form.errors.name" class="mt-2" />
-            </div>
-
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="email" value="Email" />
@@ -172,6 +161,33 @@ const clearPhotoFileInput = () => {
                     </div>
                 </div>
             </div>
+
+            <!-- Firstname -->
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel for="firstname" value="Firstname" />
+                <TextInput
+                    id="firstname"
+                    v-model="form.firstname"
+                    type="text"
+                    class="mt-1 block w-full"
+                    autocomplete="firstname"
+                />
+                <InputError :message="form.errors.firstname" class="mt-2" />
+            </div>
+            
+            <!-- Lastname -->
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel for="lastname" value="Lastname" />
+                <TextInput
+                    id="lastname"
+                    v-model="form.lastname"
+                    type="text"
+                    class="mt-1 block w-full"
+                    autocomplete="lastname"
+                />
+                <InputError :message="form.errors.lastname" class="mt-2" />
+            </div>
+        
         </template>
 
         <template #actions>
